@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacaembu Autopeças - E-commerce Metrics</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --blue-dark: #020617;
+            --blue-navy: #0A2540;
+            --blue-accent: #38bdf8;
+            --orange-main: #FF6B00;
+            --orange-glow: rgba(255, 107, 0, 0.4);
+            --text-white: #ffffff;
+            --text-muted: #94a3b8;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--blue-dark);
+            color: var(--text-white);
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-image: radial-gradient(circle at 80% 20%, rgba(56, 189, 248, 0.15), transparent 50%),
+                              radial-gradient(circle at 20% 80%, rgba(255, 107, 0, 0.1), transparent 50%);
+        }
+
+        /* ─── HEADER ─── */
+        header {
+            background: rgba(2, 6, 23, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--card-border);
+            padding: 20px 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-area img {
+            height: 40px;
+        }
+
+        /* ─── LANG SWITCHER ─── */
+        .lang-switcher {
+            display: flex;
+            gap: 8px;
+            background: rgba(255,255,255,0.05);
+            padding: 4px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            margin-left: auto;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: #fff;
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            transition: 0.3s;
+            opacity: 0.5;
+        }
+
+        .lang-btn.active {
+            background: var(--orange-main);
+            opacity: 1;
+            box-shadow: 0 0 10px var(--orange-glow);
+        }
+
+        /* ─── MAIN TITLE ─── */
+        .page-header {
+            padding: 160px 80px 20px 80px;
+            text-align: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .page-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 46px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .page-header h1 span:last-child {
+            color: var(--orange-main);
+        }
+
+        /* ─── IMPACT HERO SECTIONS ─── */
+        .headline-container {
+            max-width: 1240px;
+            margin: 0 auto 40px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .media-quote {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--blue-accent);
+            line-height: 1.5;
+            max-width: 900px;
+            margin: 0 auto 30px auto;
+            border-left: 3px solid var(--orange-main);
+            padding-left: 20px;
+            text-align: left;
+        }
+
+        .top-highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .highlight-card-top {
+            background: linear-gradient(135deg, rgba(10, 37, 64, 0.4) 0%, rgba(2, 6, 23, 0.6) 100%);
+            border: 1px solid var(--orange-main);
+            border-radius: 16px;
+            padding: 25px;
+            text-align: left;
+            box-shadow: 0 10px 25px rgba(255, 107, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .highlight-card-top:hover {
+            box-shadow: 0 15px 30px rgba(255, 107, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .highlight-card-top h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 16px;
+            color: #fff;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .highlight-card-top h3 i {
+            color: var(--orange-main);
+            font-size: 20px;
+        }
+
+        .highlight-card-top p {
+            font-size: 13.5px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ─── SECTIONS & GRIDS ─── */
+        .features-section {
+            padding: 40px 80px 80px 80px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 28px;
+            text-transform: uppercase;
+            color: var(--blue-accent);
+        }
+
+        .grid-features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+        }
+
+        .grid-features.half {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 30px 25px;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            backdrop-filter: blur(5px);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--blue-accent);
+            background: rgba(56, 189, 248, 0.05);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+        }
+
+        .feature-card .icon-wrapper {
+            width: 60px;
+            height: 60px;
+            background: rgba(56, 189, 248, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px auto;
+            color: var(--blue-accent);
+            font-size: 24px;
+            transition: 0.3s;
+        }
+
+        .feature-card:hover .icon-wrapper {
+            background: var(--blue-accent);
+            color: var(--blue-dark);
+            transform: scale(1.1);
+        }
+
+        /* ─── COUNTERS ─── */
+        .counter-wrapper {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: baseline;
+        }
+
+        .count-number {
+            color: var(--orange-main);
+            text-shadow: 0 0 15px rgba(255, 107, 0, 0.3);
+            display: inline-block;
+        }
+
+        @keyframes glowPulse {
+            0% { text-shadow: 0 0 5px rgba(255,107,0,0.2); }
+            50% { text-shadow: 0 0 25px rgba(255,107,0,0.8); }
+            100% { text-shadow: 0 0 5px rgba(255,107,0,0.2); }
+        }
+
+        .count-number.animating {
+            animation: glowPulse 1.5s ease-in-out infinite;
+        }
+
+        .metric-label {
+            font-size: 15px;
+            color: var(--text-muted);
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        /* ─── HORIZONTAL CARDS ─── */
+        .feature-card.horizontal {
+            display: flex;
+            align-items: center;
+            text-align: left;
+            gap: 25px;
+        }
+
+        .feature-card.horizontal .icon-wrapper {
+            margin: 0;
+            flex-shrink: 0;
+            width: 70px;
+            height: 70px;
+            font-size: 28px;
+        }
+
+        .badge-box {
+            background: rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 107, 0, 0.3);
+            border-radius: 14px;
+            padding: 15px 10px;
+            min-width: 150px;
+            text-align: center;
+            flex-shrink: 0;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        .badge-box .counter-wrapper {
+            font-size: 30px;
+            margin-bottom: 0;
+        }
+
+        .badge-lbl {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 11px;
+            color: var(--orange-main);
+            font-weight: 700;
+            margin-top: 6px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .card-info h3 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 18px;
+            margin-bottom: 8px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-info h3 i { color: var(--blue-accent); }
+
+        .card-info p {
+            font-size: 14px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ─── BANNER PRECISION ─── */
+        .market-precision-banner {
+            max-width: 1240px;
+            margin: 0 auto 80px auto;
+            background: linear-gradient(135deg, var(--blue-navy) 0%, rgba(2,6,23,0.9) 100%);
+            border-left: 4px solid var(--orange-main);
+            border-radius: 16px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 30px rgba(255,107,0,0.1);
+        }
+
+        .market-precision-banner p {
+            font-size: 16px;
+            font-style: italic;
+            color: #e2e8f0;
+            line-height: 1.6;
+            letter-spacing: 0.5px;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 1100px) {
+            header { padding: 20px 40px; }
+            .grid-features { grid-template-columns: repeat(2, 1fr); }
+            .grid-features.half { grid-template-columns: 1fr; }
+            .top-highlights-grid { grid-template-columns: 1fr; gap: 15px; }
+        }
+        @media (max-width: 768px) {
+            .page-header h1 { font-size: 30px; }
+            .page-header { padding-top: 120px; }
+            .grid-features { grid-template-columns: 1fr; }
+            .feature-card.horizontal { flex-direction: column; text-align: center; }
+            .badge-box { width: 100%; }
+            .card-info h3 { justify-content: center; }
+            .features-section { padding: 40px 20px; }
+            .market-precision-banner { margin: 0 20px 60px 20px; }
+            .media-quote { font-size: 16px; text-align: center; border-left: none; border-top: 3px solid var(--orange-main); padding-top: 15px; padding-left: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <img src="https://blogserlider.wordpress.com/wp-content/uploads/2026/05/laranja-e-branco.png" alt="Pacaembu Autopeças">
+        </div>
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="setLanguage('pt')" id="btn-pt">PT</button>
+            <button class="lang-btn" onclick="setLanguage('en')" id="btn-en">EN</button>
+            <button class="lang-btn" onclick="setLanguage('es')" id="btn-es">ES</button>
+        </div>
+    </header>
+
+    <div class="page-header">
+        <h1><span data-i18n="title-p1">Aceleração Digital</span> <span data-i18n="title-p2">B2B</span></h1>
+    </div>
+
+    <div class="headline-container">
+        <div class="media-quote" data-i18n="main-quote">
+            "A digitalização da Pacaembu Autopeças não é apenas sobre vender online; é sobre mover o mercado com mais inteligência, velocidade e precisão."
+        </div>
+        
+        <div class="top-highlights-grid">
+            <div class="highlight-card-top">
+                <h3><i class="fa-solid fa-boxes-stacked"></i> <span data-i18n="top-h1-title">Catálogo de Volumetria Máxima</span></h3>
+                <p data-i18n="top-h1-desc">Mais de 57.000 itens ativos estruturados para cobrir com precisão cirúrgica as frotas leves, pesadas e utilitários.</p>
+            </div>
+            <div class="highlight-card-top">
+                <h3><i class="fa-solid fa-business-time"></i> <span data-i18n="top-h2-title">Disponibilidade Absoluta 24/7</span></h3>
+                <p data-i18n="top-h2-desc">Operação ininterrupta 24 horas por dia, rompendo fusos e fusões de horários comerciais para mitigar o prejuízo de veículos parados.</p>
+            </div>
+            <div class="highlight-card-top">
+                <h3><i class="fa-solid fa-calculator"></i> <span data-i18n="top-h3-title">Blindagem Fiscal Integrada</span></h3>
+                <p data-i18n="top-h3-desc">Motor nativo que calcula a Substituição Tributária (ST) na hora e simplifica a definição da Alíquota Interestadual de ICMS no fechamento.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="features-section">
+        <div class="section-title">
+            <h2 data-i18n="sec-1">Métricas de Performance</h2>
+        </div>
+        <div class="grid-features">
+            <div class="feature-card">
+                <div class="icon-wrapper"><i class="fa-solid fa-boxes-stacked"></i></div>
+                <div class="counter-wrapper">
+                    <span class="count-number" data-target="57000" data-prefix="+">+0</span>
+                </div>
+                <div class="metric-label" data-i18n="stat-prod">Produtos Disponíveis</div>
+            </div>
+            <div class="feature-card">
+                <div class="icon-wrapper"><i class="fa-solid fa-users-gear"></i></div>
+                <div class="counter-wrapper">
+                    <span class="count-number" data-target="17000">0</span>
+                </div>
+                <div class="metric-label" data-i18n="stat-cli">Clientes Cadastrados</div>
+            </div>
+            <div class="feature-card">
+                <div class="icon-wrapper"><i class="fa-solid fa-stopwatch-20"></i></div>
+                <div class="counter-wrapper">
+                    <span class="count-number" data-target="966" data-time="true" style="font-size: 32px;">0m00s</span>
+                </div>
+                <div class="metric-label" data-i18n="stat-time">Tempo Médio de Sessão</div>
+            </div>
+            <div class="feature-card">
+                <div class="icon-wrapper"><i class="fa-solid fa-chart-line"></i></div>
+                <div class="counter-wrapper">
+                    <span class="count-number" data-target="400000" data-suffix="k">0</span>
+                </div>
+                <div class="metric-label" data-i18n="stat-events">Eventos por Mês</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section" style="background: rgba(255,255,255,0.02); border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border);">
+        <div class="section-title">
+            <h2 data-i18n="sec-2">Fidelidade & Eficiência</h2>
+        </div>
+        <div class="grid-features half">
+            <div class="feature-card horizontal">
+                <div class="badge-box">
+                    <div class="counter-wrapper"><span class="count-number" data-target="74" data-suffix="%">0</span></div>
+                    <div class="badge-lbl" data-i18n="feat-lbl">Q1 Recorrência</div>
+                </div>
+                <div class="card-info">
+                    <h3><i class="fa-solid fa-arrows-spin"></i> <span data-i18n="feat-title">Alta Fidelidade</span></h3>
+                    <p data-i18n="feat-desc">Dos clientes que compraram no Q1, 74% já haviam realizado compras nos últimos 6 meses.</p>
+                </div>
+            </div>
+
+            <div class="feature-card horizontal">
+                <div class="badge-box">
+                    <div class="counter-wrapper"><span class="count-number" data-target="96.8" data-decimals="1" data-suffix="%">0</span></div>
+                    <div class="badge-lbl" data-i18n="otif-lbl">Métrica OTIF</div>
+                </div>
+                <div class="card-info">
+                    <h3><i class="fa-solid fa-business-time"></i> <span data-i18n="otif-title">OTIF (No Prazo e Perfeitas)</span></h3>
+                    <p data-i18n="otif-desc">Compromisso rígido com o cronograma. Peça certa, na hora certa, para o caminhão não ficar parado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="section-title">
+            <h2 data-i18n="sec-3">Ecossistema Logístico & Digital</h2>
+        </div>
+        <div class="grid-features half">
+            <div class="feature-card horizontal">
+                <div class="icon-wrapper"><i class="fa-solid fa-truck-fast"></i></div>
+                <div class="card-info">
+                    <h3 data-i18n="row1-title">Logística Ultra-Rápida</h3>
+                    <p data-i18n="row1-desc">Entrega muitas vezes realizada em 24 horas ou menos para otimizar seu estoque.</p>
+                </div>
+            </div>
+
+            <div class="feature-card horizontal">
+                <div class="icon-wrapper"><i class="fa-solid fa-bolt"></i></div>
+                <div class="card-info">
+                    <h3 data-i18n="row2-title">Compra Rápida Integrada</h3>
+                    <p data-i18n="row2-desc">Sincronização perfeita entre o Catálogo Carpa e a nossa Loja Virtual.</p>
+                </div>
+            </div>
+
+            <div class="feature-card horizontal">
+                <div class="icon-wrapper"><i class="fa-solid fa-scale-balanced"></i></div>
+                <div class="card-info">
+                    <h3 data-i18n="row3-title">Inteligência Fiscal</h3>
+                    <p data-i18n="row3-desc">Exibição do preço final com transparência absoluta e cálculo automático de impostos.</p>
+                </div>
+            </div>
+
+            <div class="feature-card horizontal">
+                <div class="icon-wrapper"><i class="fa-solid fa-circle-user"></i></div>
+                <div class="card-info">
+                    <h3 data-i18n="row4-title">Portal de Serviços Completo</h3>
+                    <p data-i18n="row4-desc">Autonomia para baixar NF, solicitar 2ª via de boleto, rastrear pedidos e gerenciar devoluções.</p>
+                </div>
+            </div>
+
+            <div class="feature-card horizontal">
+                <div class="icon-wrapper"><i class="fa-solid fa-clock"></i></div>
+                <div class="card-info">
+                    <h3 data-i18n="row5-title">Disponibilidade Operacional 24/7</h3>
+                    <p data-i18n="row5-desc">Plataforma ativa 24 horas por dia, 7 dias por semana, rompendo barreiras comerciais para atender frotistas a qualquer momento.</p>
+                </div>
+            </div>
+
+            <div class="feature-card horizontal">
+                <div class="icon-wrapper"><i class="fa-solid fa-code-compare"></i></div>
+                <div class="card-info">
+                    <h3 data-i18n="row6-title">Busca por Similaridade e Aplicação</h3>
+                    <p data-i18n="row6-desc">Mapeamento de aplicação completa do veículo e sugestão inteligente de itens similares, blindando o fluxo contra erros de compra.</p>
+                </div>
+            </div>
+
+            <div class="feature-card horizontal">
+                <div class="icon-wrapper"><i class="fa-solid fa-calculator"></i></div>
+                <div class="card-info">
+                    <h3 data-i18n="row7-title">Navegação Tributária Automatizada</h3>
+                    <p data-i18n="row7-desc">Plataforma preparada para auxiliar o cliente informando sobre Substituição Tributária (ST) e Alíquota Interestadual de ICMS durante a navegação.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="market-precision-banner">
+        <p data-i18n="precision-txt">"Enquanto o mercado sofre com erros de aplicação, nossa precisão mantém a taxa de retorno quase zerada."</p>
+    </section>
+
+    <script>
+        const translations = {
+            pt: {
+                "title-p1": "Aceleração Digital", "title-p2": "B2B",
+                "main-quote": "\"A digitalização da Pacaembu Autopeças não é apenas sobre vender online; é sobre mover o mercado com mais inteligência, velocidade e precisão.\"",
+                "top-h1-title": "Catálogo de Volumetria Máxima", "top-h1-desc": "Mais de 57.000 itens ativos estruturados para cobrir com precisão cirúrgica as frotas leves, pesadas e utilitários.",
+                "top-h2-title": "Disponibilidade Absoluta 24/7", "top-h2-desc": "Operação ininterrupta 24 horas por dia, rompendo fusos e fusões de horários comerciais para mitigar o prejuízo de veículos parados.",
+                "top-h3-title": "Blindagem Fiscal Integrada", "top-h3-desc": "Motor nativo que calcula a Substituição Tributária (ST) na hora e simplifica a definição da Alíquota Interestadual de ICMS no fechamento.",
+                "sec-1": "Métricas de Performance", "sec-2": "Fidelidade & Eficiência", "sec-3": "Ecossistema Logístico & Digital",
+                "stat-prod": "Produtos Disponíveis", "stat-cli": "Clientes Cadastrados",
+                "stat-time": "Tempo Médio de Sessão", "stat-events": "Eventos por Mês",
+                "feat-lbl": "Q1 Recorrência", "feat-title": "Alta Fidelidade",
+                "feat-desc": "Dos clientes que compraram no Q1, 74% já haviam realizado compras nos últimos 6 meses.",
+                "otif-lbl": "MÉTRICA OTIF", "otif-title": "OTIF (No Prazo e Perfeitas)", "otif-desc": "Compromisso rígido com o cronograma. Peça certa, na hora certa, para o caminhão não ficar parado.",
+                "precision-txt": "\"Enquanto o mercado sofre com erros de aplicação, nossa precisão mantém a taxa de retorno quase zerada.\"",
+                "row1-title": "Logística Ultra-Rápida", "row1-desc": "Entrega muitas vezes realizada em 24 horas ou menos para otimizar seu estoque.",
+                "row2-title": "Compra Rápida Integrada", "row2-desc": "Sincronização perfeita entre o Catálogo Carpa e a nossa Loja Virtual.",
+                "row3-title": "Inteligência Fiscal", "row3-desc": "Exibição do preço final com transparência absoluta e cálculo automático de impostos.",
+                "row4-title": "Portal de Serviços Completo", "row4-desc": "Autonomia para baixar NF, solicitar 2ª via de boleto, rastrear pedidos e gerenciar devoluções.",
+                "row5-title": "Disponibilidade Operacional 24/7", "row5-desc": "Plataforma ativa 24 horas por dia, 7 dias por semana, rompendo barreiras comerciais para atender frotistas a qualquer momento.",
+                "row6-title": "Busca por Similaridade e Aplicação", "row6-desc": "Mapeamento de aplicação completa do veículo e sugestão inteligente de itens similares, blindando o fluxo contra erros de compra.",
+                "row7-title": "Navegação Tributária Automatizada", "row7-desc": "Plataforma preparada para auxiliar o cliente informando sobre Substituição Tributária (ST) e Alíquota Interestadual de ICMS durante a navegação."
+            },
+            en: {
+                "title-p1": "Digital B2B", "title-p2": "Acceleration",
+                "main-quote": "\"The digitalization of Pacaembu Autopeças is not just about selling online; it's about moving the market with more intelligence, speed, and precision.\"",
+                "top-h1-title": "Maximum Volumetry Catalog", "top-h1-desc": "Over 57,000 active items structured to cover light, heavy, and utility fleets with surgical precision.",
+                "top-h2-title": "Absolute 24/7 Availability", "top-h2-desc": "Uninterrupted operation 24 hours a day, breaking business hour barriers to mitigate the costs of idle vehicles.",
+                "top-h3-title": "Integrated Tax Shielding", "top-h3-desc": "Native engine that calculates Tax Substitution (ST) on the fly and simplifies the layout of the Interstate ICMS Rate at checkout.",
+                "sec-1": "Performance Metrics", "sec-2": "Loyalty & Efficiency", "sec-3": "Logistics & Digital Ecosystem",
+                "stat-prod": "Available Products", "stat-cli": "Registered Clients",
+                "stat-time": "Average Session Time", "stat-events": "Events per Month",
+                "feat-lbl": "Q1 Repeat Rate", "feat-title": "High Loyalty",
+                "feat-desc": "Out of the clients who bought in Q1, 74% had already purchased in the last 6 months.",
+                "otif-lbl": "OTIF METRIC", "otif-title": "OTIF (On Time In Full)", "otif-desc": "Strict commitment to the schedule. The right part, at the right time, so the truck doesn't stay idle.",
+                "precision-txt": "\"While the market suffers from application errors, our precision keeps the return rate close to zero.\"",
+                "row1-title": "Ultra-Fast Logistics", "row1-desc": "Order delivery often executed in 24 hours or less to optimize your inventory.",
+                "row2-title": "Integrated Quick Purchase", "row2-desc": "Seamless synchronization between the Carpa Catalog and our Virtual Store.",
+                "row3-title": "Tax Intelligence", "row3-desc": "Final price display with absolute transparency and automatic tax calculation.",
+                "row4-title": "Complete Service Portal", "row4-desc": "Autonomy to download invoices, request duplicate slips, track orders, and manage returns.",
+                "row5-title": "24/7 Operational Availability", "row5-desc": "Platform active 24 hours a day, 7 days a week, breaking business hours barriers to serve fleet operators at any time.",
+                "row6-title": "Similarity & Fitment Search", "row6-desc": "Full vehicle fitment mapping and intelligent suggestion of similar items, shielding the process against purchase errors.",
+                "row7-title": "Automated Tax Navigation", "row7-desc": "Platform prepared to assist the customer by providing information about Tax Substitution (ST) and Interstate ICMS rates during browsing."
+            },
+            es: {
+                "title-p1": "Aceleración Digital", "title-p2": "B2B",
+                "main-quote": "\"La digitalización de Pacaembu Autopeças no es solo vender online; se trata de mover el mercado con más inteligencia, velocidad y precisión.\"",
+                "top-h1-title": "Catálogo de Volumetría Máxima", "top-h1-desc": "Más de 57.000 artículos activos estructurados para cubrir con precisión quirúrgica las flotas ligeras, pesadas y de utilitarios.",
+                "top-h2-title": "Disponibilidad Absoluta 24/7", "top-h2-desc": "Operación ininterrumpida las 24 horas del día, rompiendo barreras de horarios comerciales para mitigar pérdidas por vehículos parados.",
+                "top-h3-title": "Protección Fiscal Integrada", "top-h3-desc": "Motor nativo que calcula la Sustitución Tributaria (ST) al instante y simplifica la definición de la Alícuota Interestatal de ICMS al finalizar la compra.",
+                "sec-1": "Métricas de Rendimiento", "sec-2": "Fidelidad y Eficiencia", "sec-3": "Ecosistema Logístico y Digital",
+                "stat-prod": "Productos Disponibles", "stat-cli": "Clientes Registrados",
+                "stat-time": "Tiempo Medio de Sessión", "stat-events": "Eventos por Mes",
+                "feat-lbl": "Q1 Recurrencia", "feat-title": "Alta Fidelidade",
+                "feat-desc": "De los clientes que compraron en el Q1, el 74% ya había realizado compras en los últimos 6 meses.",
+                "otif-lbl": "MÉTRICA OTIF", "otif-title": "OTIF (A Tiempo y Completo)", "otif-desc": "Compromiso estricto con el cronograma. La pieza correcta, en el momento adecuado, para que el camión no se detenga.",
+                "precision-txt": "\"Mientras el mercado sufre con errores de aplicación, nuestra precisión mantiene la tasa de retorno casi en cero.\"",
+                "row1-title": "Logística Ultra-Rápida", "row1-desc": "Entrega muitas vezes realizada em 24 horas ou menos para optimizar su stock.",
+                "row2-title": "Compra Rápida Integrada", "row2-desc": "Sincronización perfecta entre el Catálogo Carpa y nuestra Tienda Virtual.",
+                "row3-title": "Inteligencia Fiscal", "row3-desc": "Visualización del preço final con transparencia absoluta y cálculo automático de impuestos.",
+                "row4-title": "Portal de Servicios Completo", "row4-desc": "Autónia para descargar facturas, solicitar duplicados de recibos, rastrear pedidos y gestionar devoluciones.",
+                "row5-title": "Disponibilidad Operativa 24/7", "row5-desc": "Plataforma activa las 24 horas del día, los 7 dias de la semana, rompiendo barreras de horarios comerciales para atender flotistas en cualquier momento.",
+                "row6-title": "Búsqueda por Similitud y Aplicación", "row6-desc": "Mapeo de la aplicación completa del vehículo y sugerencia inteligente de artículos similares, protegiendo el flujo contra errores de compra.",
+                "row7-title": "Navegación Tributaria Automatizada", "row7-desc": "Plataforma preparada para ayudar al cliente informando sobre Sustitución Tributaria (ST) y Alícuota Interestatal de ICMS durante la navegación."
+            }
+        };
+
+        function setLanguage(lang) {
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+            document.getElementById('btn-' + lang).classList.add('active');
+
+            document.querySelectorAll('[data-i18n]').forEach(element => {
+                const key = element.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    element.innerHTML = translations[lang][key];
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const counters = document.querySelectorAll('.count-number[data-target]');
+            
+            counters.forEach(counter => {
+                const target = parseFloat(counter.getAttribute('data-target'));
+                const prefix = counter.getAttribute('data-prefix') || '';
+                const suffix = counter.getAttribute('data-suffix') || '';
+                const decimals = parseInt(counter.getAttribute('data-decimals')) || 0;
+                const isTime = counter.getAttribute('data-time') === 'true';
+                
+                let displayTarget = target;
+                if (suffix === 'k' && target >= 1000) {
+                    displayTarget = target / 1000;
+                }
+
+                const duration = 3500; 
+                const startTime = performance.now();
+
+                function updateCount(currentTime) {
+                    const elapsedTime = currentTime - startTime;
+                    const progress = Math.min(elapsedTime / duration, 1);
+                    
+                    const easeProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+                    const currentValue = easeProgress * displayTarget;
+                    
+                    let formattedValue;
+
+                    if (isTime) {
+                        const totalSeconds = Math.floor(currentValue);
+                        const minutes = Math.floor(totalSeconds / 60);
+                        const seconds = totalSeconds % 60;
+                        formattedValue = minutes + "m" + seconds.toString().padStart(2, '0') + "s";
+                    } else {
+                        formattedValue = currentValue.toFixed(decimals);
+                        if (decimals === 0 && suffix === '') {
+                            formattedValue = Math.floor(currentValue).toLocaleString('pt-BR');
+                        }
+                    }
+                    
+                    counter.textContent = prefix + formattedValue + suffix;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        counter.classList.add('animating');
+                    }
+                }
+                requestAnimationFrame(updateCount);
+            });
+        });
+    </script>
+</body>
+</html>
