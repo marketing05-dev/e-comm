@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -388,8 +388,8 @@
             <img src="https://blogserlider.wordpress.com/wp-content/uploads/2026/05/laranja-e-branco.png" alt="Pacaembu Autopeças">
         </div>
         <div class="lang-switcher">
-            <button class="lang-btn active" onclick="setLanguage('pt')" id="btn-pt">PT</button>
-            <button class="lang-btn" onclick="setLanguage('en')" id="btn-en">EN</button>
+            <button class="lang-btn" onclick="setLanguage('pt')" id="btn-pt">PT</button>
+            <button class="lang-btn active" onclick="setLanguage('en')" id="btn-en">EN</button>
             <button class="lang-btn" onclick="setLanguage('es')" id="btn-es">ES</button>
         </div>
     </header>
@@ -577,9 +577,9 @@
             en: {
                 "title-p1": "Digital B2B", "title-p2": "Acceleration",
                 "main-quote": "\"The digitalization of Pacaembu Autopeças is not just about selling online; it's about moving the market with more intelligence, speed, and precision.\"",
-                "top-h1-title": "Maximum Volumetry Catalog", "top-h1-desc": "Over 57,000 active items structured to cover light, heavy, and utility fleets with surgical precision.",
-                "top-h2-title": "Absolute 24/7 Availability", "top-h2-desc": "Uninterrupted operation 24 hours a day, breaking business hour barriers to mitigate the costs of idle vehicles.",
-                "top-h3-title": "Integrated Tax Shielding", "top-h3-desc": "Native engine that calculates Tax Substitution (ST) on the fly and simplifies the layout of the Interstate ICMS Rate at checkout.",
+                "top-h1-title": "Maximum Volumetry Catalog", "top-h1-desc": "A Portfolio of over 57,000 SKUs covering all range of Commercial Vehicles.",
+                "top-h2-title": "Absolute 24/7 Availability", "top-h2-desc": "Uninterrupted operation 24 hours a day, breaking business hour barriers to mitigate the costs of down time.",
+                "top-h3-title": "Integrated Tax Shielding", "top-h3-desc": "Native engine that calculates Taxes real time and simplifies the view at checkout.",
                 "sec-1": "Performance Metrics", "sec-2": "Loyalty & Efficiency", "sec-3": "Logistics & Digital Ecosystem",
                 "stat-prod": "Available Products", "stat-cli": "Registered Clients",
                 "stat-time": "Average Session Time", "stat-events": "Events per Month",
@@ -592,7 +592,7 @@
                 "row3-title": "Tax Intelligence", "row3-desc": "Final price display with absolute transparency and automatic tax calculation.",
                 "row4-title": "Complete Service Portal", "row4-desc": "Autonomy to download invoices, request duplicate slips, track orders, and manage returns.",
                 "row5-title": "24/7 Operational Availability", "row5-desc": "Platform active 24 hours a day, 7 days a week, breaking business hours barriers to serve fleet operators at any time.",
-                "row6-title": "Similarity & Fitment Search", "row6-desc": "Full vehicle fitment mapping and intelligent suggestion of similar items, shielding the process against purchase errors.",
+                "row6-title": "Similarity & Application Search", "row6-desc": "Full vehicle application mapping and intelligent suggestion of similar items, shielding the process against purchase errors.",
                 "row7-title": "Automated Tax Navigation", "row7-desc": "Platform prepared to assist the customer by providing information about Tax Substitution (ST) and Interstate ICMS rates during browsing."
             },
             es: {
@@ -631,6 +631,7 @@
         }
 
         document.addEventListener('DOMContentLoaded', () => {
+            setLanguage('en');
             const counters = document.querySelectorAll('.count-number[data-target]');
             
             counters.forEach(counter => {
